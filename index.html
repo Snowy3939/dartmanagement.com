@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DART Management Inc.</title>
+<meta name="description" content="DART Management Inc. — organization improvement, business services, software development, and information technology.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand: #0E6B64;
+    --brand-deep: #0A524C;
+    --ink: #1A2523;
+    --muted: #5C6B67;
+    --faint: #8A9691;
+    --paper: #F7F5EF;
+    --card: #FCFBF8;
+    --border: #E7E3D8;
+    --gold: #F4B860;
+    --teal-tint: #E4F0EE;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Schibsted Grotesk", -apple-system, "Helvetica Neue", Arial, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+  .topbar {
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+  }
+  .topbar-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 0;
+  }
+  .brand-row { display: flex; align-items: center; gap: 11px; }
+  .brand-tile {
+    width: 34px; height: 34px; border-radius: 9px;
+    background: var(--ink); color: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 14px; letter-spacing: 0.5px;
+  }
+  .brand-name { font-size: 16.5px; font-weight: 800; letter-spacing: -0.1px; white-space: nowrap; }
+  .brand-name span { color: var(--brand); }
+  .topbar-mail {
+    font-size: 13.5px; font-weight: 700; color: var(--brand-deep);
+    text-decoration: none; padding: 8px 16px; border-radius: 999px;
+    background: var(--teal-tint); border: 1px solid #CBE2DE;
+    white-space: nowrap;
+  }
+  .topbar-mail:hover { background: #D8EAE7; }
+  @media (max-width: 480px) { .topbar-mail { display: none; } }
+
+  .hero { padding: 56px 0 44px; }
+  .hero h1 {
+    font-size: clamp(34px, 6vw, 56px);
+    font-weight: 900; line-height: 1.08; letter-spacing: -0.8px;
+    overflow-wrap: break-word;
+  }
+  .hero h1 span { color: var(--brand); }
+  .hero .lede {
+    margin-top: 14px; font-size: 17.5px; color: var(--muted);
+    max-width: 620px; font-weight: 500;
+  }
+  .services-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    column-gap: 48px; row-gap: 30px; margin-top: 36px;
+  }
+  @media (max-width: 560px) { .services-grid { grid-template-columns: 1fr; } }
+  .service-cell { border-top: 3px solid var(--brand); padding-top: 14px; }
+  .service-cell .num {
+    font-size: 12px; font-weight: 800; letter-spacing: 1.4px;
+    color: var(--faint); margin-bottom: 6px;
+  }
+  .service-cell .label {
+    font-size: clamp(19px, 2.6vw, 24px); font-weight: 800; letter-spacing: -0.3px;
+    color: var(--ink); line-height: 1.2;
+  }
+
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 42px 0 56px; align-items: stretch; }
+  @media (max-width: 680px) { .cards { grid-template-columns: 1fr; } }
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-top: 3px solid var(--gold);
+    border-radius: 16px; padding: 26px 28px 26px;
+  }
+  .eyebrow {
+    font-size: 11px; font-weight: 800; letter-spacing: 1.4px;
+    text-transform: uppercase; color: var(--faint); margin-bottom: 12px;
+  }
+  .card h2 { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+  .card p { font-size: 15px; color: var(--muted); font-weight: 500; }
+  .card p + p { margin-top: 10px; }
+
+  .product-card { border-top-color: var(--brand); }
+  .badge {
+    display: inline-block; margin-top: 14px;
+    background: var(--teal-tint); color: var(--brand-deep);
+    border: 1px solid #CBE2DE; border-radius: 999px;
+    font-size: 12px; font-weight: 800; padding: 4px 12px;
+  }
+
+  .contact-list { list-style: none; font-size: 15px; font-weight: 600; }
+  .contact-list li { padding: 7px 0; border-bottom: 1px solid var(--border); }
+  .contact-list li:last-child { border-bottom: none; }
+  .contact-list .k {
+    display: inline-block; width: 84px; color: var(--faint);
+    font-size: 11px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;
+  }
+  .contact-list a { color: var(--brand); text-decoration: none; font-weight: 700; }
+  .contact-list a:hover { text-decoration: underline; }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 26px 0 40px; font-size: 13px; color: var(--faint); font-weight: 500;
+  }
+  footer .legal { font-weight: 700; color: var(--muted); }
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="brand-row">
+        <div class="brand-tile">DM</div>
+        <div class="brand-name">DART <span>Management</span></div>
+      </div>
+      <a class="topbar-mail" href="mailto:rick@dartmanagement.com">rick@dartmanagement.com</a>
+    </div>
+  </header>
+
+  <section class="hero wrap">
+    <h1>DART <span>Management</span> Inc.</h1>
+    <p class="lede">Helping organizations run better &mdash; and building the software that supports the way they work.</p>
+    <div class="services-grid">
+      <div class="service-cell"><div class="num">01</div><div class="label">Organization improvement</div></div>
+      <div class="service-cell"><div class="num">02</div><div class="label">Business services</div></div>
+      <div class="service-cell"><div class="num">03</div><div class="label">Software development</div></div>
+      <div class="service-cell"><div class="num">04</div><div class="label">Information technology</div></div>
+    </div>
+  </section>
+
+  <section class="cards wrap">
+    <div class="card">
+      <div class="eyebrow">About the company</div>
+      <h2>Who we are</h2>
+      <p>DART Management Inc. provides organization-improvement consulting and business services, alongside software development and information technology.</p>
+      <p>The company also builds and publishes its own software, including LedgerCaddy, a bookkeeping application for the Mac.</p>
+    </div>
+
+    <div class="card product-card">
+      <div class="eyebrow">Software</div>
+      <h2>LedgerCaddy</h2>
+      <p>Straightforward bookkeeping for the Mac. Your books live in a single file on your own computer — accounts, transactions, reconciliation, and reports, with nothing stored in the cloud.</p>
+      <span class="badge">Native macOS · Coming soon</span>
+    </div>
+
+    <div class="card" style="grid-column: 1 / -1;">
+      <div class="eyebrow">Contact</div>
+      <h2>Get in touch</h2>
+      <ul class="contact-list">
+        <li><span class="k">Email</span><a href="mailto:rick@dartmanagement.com">rick@dartmanagement.com</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="legal">DART Management Inc.</div>
+      <div>&copy; 2026 DART Management Inc. All rights reserved.</div>
+    </div>
+  </footer>
+</body>
+</html>
